@@ -1,19 +1,26 @@
-import ImageContext from "./Context/imageContext"
 import React, { Component, Fragment } from 'react'
 import FileUpload from "./Components/FileUpload";
+import ImageEditor from "./Components/ImageEditor";
+import { connect } from "react-redux";
 
-export default class App extends Component {
-  static contextType=ImageContext
-
-  componentDidMount=()=>{
-  }
+class App extends Component {
   render() {
     return (
       <Fragment>
-      <div>App</div>
-      <FileUpload></FileUpload>
+        {this.props.editStatus === true ? <><ImageEditor></ImageEditor></> : <><FileUpload></FileUpload></>}
+      
+      
       </Fragment>
     )
   }
 }
 
+
+const mapStateToProps = (props) => {
+  return {
+    fileUploadStatus:props.fileUploadStatus,
+    editStatus:props.editStatus
+  };
+};
+
+export default connect(mapStateToProps)(App);
