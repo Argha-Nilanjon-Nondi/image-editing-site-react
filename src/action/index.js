@@ -18,3 +18,13 @@ export const imageFileDis = (file) => {
         payload: file
     }
 }
+
+export const imageStyleDis = (property,value) => {
+    return {
+        type: "image_style_edit",
+        payload: {
+            property,
+            value
+        }
+    }
+}

@@ -53,9 +53,9 @@ class FileUpload extends Component {
             )}
           </div>
           {this.props.fileUploadStatus === false ? (
-            <div class="mb-3">
+            <div className="mb-3">
               <input
-                class="form-control block w-full px-2 py-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition  ease-in-out  m-0  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                className="form-control block w-full px-2 py-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition  ease-in-out  m-0  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 id="formFileSm"
                 onChange={this.selectFile}
                 type="file"
@@ -67,11 +67,11 @@ class FileUpload extends Component {
           <div className="m-1.5">
             {this.props.fileUploadStatus === true ? (
               <>
-                <button class="text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg sm:mt-0 mr-1" onClick={this.selected}>
+                <button className="text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg sm:mt-0 mr-1" onClick={this.selected}>
                   Select
                 </button>
                 <button
-                  class="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-lg sm:mt-0"
+                  className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-lg sm:mt-0"
                   onClick={this.cancel}
                 >
                   Cancel
