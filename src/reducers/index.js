@@ -21,13 +21,12 @@ const imageFile = (state = null, action) => {
   return state;
 };
 
-const imageStyle = (state = "", action) => {
+const imageStyle = (state = { brightness: 1, grayscale: 0, contrast:1,invert:0}, action) => {
   if (action.type === "image_style_edit") {
-
-    state+=`${action.payload.property}(${action.payload.value}) `;
-
+    let new_state = state;
+    new_state[action.payload.property] = action.payload.value;
+    return new_state;
   }
-
 
   return state;
 };

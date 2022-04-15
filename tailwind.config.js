@@ -4,7 +4,9 @@ module.exports = {
   ],
   theme: {
     screens:{
-      "image-upload-sm":{"max":"240px"}
+      "image-upload-sm":{"max":"240px"},
+      "image-control-lg":{"max":"1110px"},
+      "image-control-sm":{"max":"387px"}
     },
     extend: {},
   },
