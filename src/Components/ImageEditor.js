@@ -10,7 +10,6 @@ class ImageEditor extends Component {
   
     this.state = {
        filter_string:"",
-       download_element:<></>
     }
   }
 
@@ -27,14 +26,13 @@ class ImageEditor extends Component {
   filterForImage=(event)=>{
     this.props.imageStyleDis(event.target.name,event.target.value)
     this.gatherAllStyle()
-    this.setState({download_element:<Download></Download>})
   }
 
   render() {
     return (
       <Fragment>
         <div className="w-11/12 h-96 mx-auto mt-8 grid p-4 grid-cols-2 gap-4 justify-center image-control-lg:h-min image-control-lg:grid-cols-1">
-          <img className="h-full image-control-lg:h-96" src={this.props.imageFile} style={{filter:this.state.filter_string}} alt="Sorry" />
+          <img className="h-full image-control-lg:h-96 image-control-sm-a:h-40 p-2 border-2 border-gray-500" src={this.props.imageFile} style={{filter:this.state.filter_string}} alt="Sorry" />
           <div className="h-full">
             <div>
               <div className="relative">
@@ -54,7 +52,7 @@ class ImageEditor extends Component {
               </div>
               <div className="relative mt-1">
                 <label htmlFor="customRange1" className="form-label">
-                  Grayscale ({this.props.imageStyle.grayscale}%)
+                  Grayscale ({this.props.imageStyle.grayscale*100}%)
                 </label>
                 <input
                   type="range"
@@ -62,14 +60,14 @@ class ImageEditor extends Component {
                   name="grayscale"
                   min="0"
                   max="1"
-                  step="0.1"
+                  step="0.01"
                   defaultValue={this.props.imageStyle.grayscale}
                   onChange={this.filterForImage}
                 />
               </div>
               <div className="relative mt-1">
                 <label htmlFor="customRange1" className="form-label">
-                  Contrast ({this.props.imageStyle.contrast}%)
+                  Contrast ({this.props.imageStyle.contrast*100}%)
                 </label>
                 <input
                   type="range"
@@ -77,14 +75,14 @@ class ImageEditor extends Component {
                   name="contrast"
                   min="0"
                   max="1"
-                  step="0.1"
+                  step="0.01"
                   defaultValue={this.props.imageStyle.contrast}
                   onChange={this.filterForImage}
                 />
               </div>
               <div className="relative mt-1">
                 <label htmlFor="customRange1" className="form-label">
-                  Invert ({this.props.imageStyle.invert}%)
+                  Invert ({this.props.imageStyle.invert*100}%)
                 </label>
                 <input
                   type="range"
@@ -97,8 +95,23 @@ class ImageEditor extends Component {
                   onChange={this.filterForImage}
                 />
               </div>
+              <div className="relative mt-1">
+                <label htmlFor="customRange1" className="form-label">
+                  sepia ({this.props.imageStyle.sepia * 100}%)
+                </label>
+                <input
+                  type="range"
+                  className=" form-range appearance-none w-full h-1 bg-gray-300 p-0 focus:outline-none focus:ring-0 focus:shadow-none"
+                  name="sepia"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  defaultValue={this.props.imageStyle.sepia}
+                  onChange={this.filterForImage}
+                />
+              </div>
             </div>
-            {this.state.download_element}
+            <Download></Download>
           </div>
         </div>
       </Fragment>

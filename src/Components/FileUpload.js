@@ -32,7 +32,7 @@ class FileUpload extends Component {
   render() {
     return (
       <Fragment>
-        <div className="container mt-4 w-9/12 image-upload-sm:w-11/12 mx-auto">
+        <div className="mt-4 w-9/12 image-upload-sm:w-11/12 mx-auto">
           <div className="mb-6 bg-black-100  h-60">
             {this.props.fileUploadStatus === true ? (
               <>

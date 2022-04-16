@@ -21,7 +21,7 @@ const imageFile = (state = null, action) => {
   return state;
 };
 
-const imageStyle = (state = { brightness: 1, grayscale: 0, contrast:1,invert:0}, action) => {
+const imageStyle = (state = { brightness: 1, grayscale: 0, contrast:1,invert:0,sepia:0}, action) => {
   if (action.type === "image_style_edit") {
     let new_state = state;
     new_state[action.payload.property] = action.payload.value;
