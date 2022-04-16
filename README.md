@@ -16,6 +16,10 @@ It is an image editing site
 - CSS3
 - Canvas
 - Tailwind CSS
+- React Js
+- Redux
+- Javascript
+- Responsive Design
 
 ## NPM setup
 ```bash
