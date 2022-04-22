@@ -31,11 +31,19 @@ const imageStyle = (state = { brightness: 1, grayscale: 0, contrast:1,invert:0,s
   return state;
 };
 
+const filterString=(state="",action)=>{
+  if (action.type === "filter_string_edit") {
+    return action.payload.value;
+  }
+  return state;
+}
+
 const rootReducers = combineReducers({
   fileUploadStatus,
   editStatus,
   imageFile,
   imageStyle,
+  filterString
 });
 
 export default rootReducers;

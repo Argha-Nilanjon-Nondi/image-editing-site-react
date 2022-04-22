@@ -28,3 +28,12 @@ export const imageStyleDis = (property,value) => {
         }
     }
 }
+
+export const filterStringDis=(value)=>{
+    return {
+        type: "filter_string_edit",
+        payload: {
+            value
+        }
+    }
+}
