@@ -4,13 +4,17 @@ import { imageStyleDis,filterStringDis } from "../action";
 
 class FilterControl extends Component {
 
-constructor(props) {
-  super(props)
-
-  this.state = {
-      imageStyle:this.props.imageStyle
-  }
-}
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+         brightness:this.props.imageStyle.brightness,
+         grayscale:this.props.imageStyle.grayscale,
+         invert:this.props.imageStyle.invert,
+         sepia:this.props.imageStyle.sepia,
+         contrast:this.props.imageStyle.contrast,
+      }
+    }
 
     gatherAllStyle = () => {
         console.log(this.props.imageStyle)
@@ -23,7 +27,8 @@ constructor(props) {
     }
 
     filterForImage = (event) => {
-        this.props.imageStyleDis([event.target.name], event.target.value)
+        this.props.imageStyleDis(event.target.name, event.target.value)
+        this.setState({[event.target.name]:event.target.value})
         this.gatherAllStyle()
     }
 
@@ -34,8 +39,10 @@ constructor(props) {
                 <div>
                     <div className="relative">
                         <label htmlFor="customRange1" className="form-label">
-                            Brightness ({this.state.imageStyle.brightness}%)
+                            Brightness ({this.state.brightness}%)
+                            
                         </label>
+                       
                         <input
                             type="range"
                             className=" form-range appearance-none w-full h-1 bg-gray-300 p-0 focus:outline-none focus:ring-0 focus:shadow-none"
@@ -43,13 +50,13 @@ constructor(props) {
                             min={1}
                             max={100}
                             step="0.1"
-                            defaultValue={this.props.imageStyle.brightness}
+                            defaultValue={this.state.brightness}
                             onChange={this.filterForImage}
                         />
                     </div>
                     <div className="relative mt-1">
                         <label htmlFor="customRange1" className="form-label">
-                            Grayscale ({this.state.imageStyle.grayscale * 100}%)
+                            Grayscale ({this.state.grayscale * 100}%)
                         </label>
                         <input
                             type="range"
@@ -58,13 +65,13 @@ constructor(props) {
                             min="0"
                             max="1"
                             step="0.01"
-                            defaultValue={this.props.imageStyle.grayscale}
+                            defaultValue={this.state.grayscale}
                             onChange={this.filterForImage}
                         />
                     </div>
                     <div className="relative mt-1">
                         <label htmlFor="customRange1" className="form-label">
-                            Contrast ({this.props.imageStyle.contrast * 100}%)
+                            Contrast ({this.state.contrast * 100}%)
                         </label>
                         <input
                             type="range"
@@ -73,13 +80,13 @@ constructor(props) {
                             min="0"
                             max="1"
                             step="0.01"
-                            defaultValue={this.props.imageStyle.contrast}
+                            defaultValue={this.state.contrast}
                             onChange={this.filterForImage}
                         />
                     </div>
                     <div className="relative mt-1">
                         <label htmlFor="customRange1" className="form-label">
-                            Invert ({this.props.imageStyle.invert * 100}%)
+                            Invert ({this.state.invert * 100}%)
                         </label>
                         <input
                             type="range"
@@ -88,13 +95,13 @@ constructor(props) {
                             min="0"
                             max="1"
                             step="0.01"
-                            defaultValue={this.props.imageStyle.invert}
+                            defaultValue={this.state.invert}
                             onChange={this.filterForImage}
                         />
                     </div>
                     <div className="relative mt-1">
                         <label htmlFor="customRange1" className="form-label">
-                            sepia ({this.props.imageStyle.sepia}%)
+                            sepia ({this.state.sepia * 100}%)
                         </label>
                         <input
                             type="range"
@@ -103,7 +110,7 @@ constructor(props) {
                             min="0"
                             max="1"
                             step="0.01"
-                            defaultValue={this.props.imageStyle.sepia}
+                            defaultValue={this.state.sepia}
                             onChange={this.filterForImage}
                         />
                     </div>

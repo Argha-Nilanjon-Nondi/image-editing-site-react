@@ -11,15 +11,6 @@ class Download extends Component {
     };
   }
 
-  gatherAllStyle = () => {
-    let property;
-    let temp_filter_string = "";
-    for (property in this.props.imageStyle) {
-      temp_filter_string += `${property}(${this.props.imageStyle[property]}) `;
-    }
-    console.log(temp_filter_string);
-    return temp_filter_string.trimRight();
-  };
 
   prepareImage = () => {
     let canvas = document.getElementById("canvas");
@@ -30,7 +21,7 @@ class Download extends Component {
     img.onload = () => {
       ctx.canvas.height = img.height;
       ctx.canvas.width = img.width;
-      ctx.filter = this.gatherAllStyle();
+      ctx.filter = this.props.filterString;
       ctx.drawImage(img, 0, 0);
       download_btn.download = "your_image.png";
       download_btn.href = canvas.toDataURL("image/jpg");
@@ -72,7 +63,7 @@ class Download extends Component {
 
 const mapStateToProps = (props) => {
   return {
-    imageStyle: props.imageStyle,
+    filterString:props.filterString,
     imageFile: props.imageFile,
   };
 };
